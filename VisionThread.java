@@ -74,7 +74,7 @@ public class VisionThread implements VisionPipeline {
 		double filterContoursMinArea = 0.0;
 		double filterContoursMinPerimeter = 0.0;
 		double filterContoursMinWidth = 0.0;
-		double filterContoursMaxWidth = 10000.0;
+		double filterContoursMaxWidth = 9999.0;
 		double filterContoursMinHeight = 0.0;
 		double filterContoursMaxHeight = 10000.0;
 		double[] filterContoursSolidity = {69.47535491359291, 100.0};
@@ -181,7 +181,7 @@ public class VisionThread implements VisionPipeline {
 		if (borderValue == null) {
 			borderValue = new Scalar(-1);
 		}
-		Imgproc.erode(src, dst, kernel, anchor, (int)iterations, borderType, borderValue);
+		`	Imgproc.erode(src, dst, kernel, anchor, (int)iterations, borderType, borderValue);
 	}
 
 	/**

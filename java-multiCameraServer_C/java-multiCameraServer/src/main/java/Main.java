@@ -230,6 +230,7 @@ public final class Main {
     int inc = 0;
     int car = 13;
     int van = 69;
+   
     
     if (server) {
       System.out.println("Setting up NetworkTables server");
@@ -254,6 +255,7 @@ public final class Main {
         table.getEntry("x").setNumber(inc);
         table.getEntry("Car").setNumber(car);
         table.getEntry("van").setNumber(van);
+        table.getEntry("");
       });
       /* something like this for GRIP:
       VisionThread visionThread = new VisionThread(cameras.get(0),
