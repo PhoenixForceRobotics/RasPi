@@ -35,7 +35,10 @@ public class networkTable{
             System.out.println("width" + width);
             System.out.println("height" + height);
             System.out.printlnt("solidity" + solidity);
+                //The above six line print the value out to the view window*IN THE IDE        
+
+
+                
         }
     }
     }
-}
