@@ -25,6 +25,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.vision.VisionPipeline;
 import edu.wpi.first.vision.VisionThread;
+import edu.wpi.first.networktables.NetworkTable;
 
 import org.opencv.core.Mat;
 
@@ -206,11 +207,12 @@ public final class Main {
     @Override
     public void process(Mat mat) {
       val += 1;
+      System.out.println("Now you don't!");
     }
   }
 
   /**
-   * Main.
+   * Main.\
    */
   public static void main(String... args) {
     if (args.length > 0) {
@@ -224,6 +226,11 @@ public final class Main {
 
     // start NetworkTables
     NetworkTableInstance ntinst = NetworkTableInstance.getDefault();
+    NetworkTable table = ntinst.getTable ("myNetworkTables");
+    int inc = 0;
+    int car = 13;
+    int van = 69;
+    
     if (server) {
       System.out.println("Setting up NetworkTables server");
       ntinst.startServer();
@@ -243,6 +250,10 @@ public final class Main {
       VisionThread visionThread = new VisionThread(cameras.get(0),
               new MyPipeline(), pipeline -> {
         // do something with pipeline results
+        System.out.println("Now you see me!");
+        table.getEntry("x").setNumber(inc);
+        table.getEntry("Car").setNumber(car);
+        table.getEntry("van").setNumber(van);
       });
       /* something like this for GRIP:
       VisionThread visionThread = new VisionThread(cameras.get(0),

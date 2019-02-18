@@ -186,7 +186,7 @@ public final class Main {
     @Override
     public void process(Mat mat) {
       val += 1;
-      //System.out.println("")
+      System.out.println("Now you don't!");
     }
   }
 
@@ -223,7 +223,7 @@ public final class Main {
     if (cameras.size() >= 1) {
       VisionThread visionThread = new VisionThread(cameras.get(0),
               new MyPipeline(), pipeline -> {
-             // System.out.println ("Now you see me!");
+             System.out.println ("Now you see me!");
         // do something with pipeline results
       });
       /* something like this for GRIP:
