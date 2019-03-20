@@ -5,11 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+
+
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileWriter;
+
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors; 
+import java.util.HashMap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,9 +36,23 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.vision.VisionPipeline;
 import edu.wpi.first.vision.VisionThread;
+
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.vision.VisionPipeline; 
 
 import org.opencv.core.Mat;
+import org.opencv.core.*;
+import org.opencv.core.Core.*;
+import org.opencv.features2d.FeatureDetector;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.*;
+import org.opencv.objdetect.*;
+import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
+
+import grip.*;
+
+
 
 /*
    JSON format:
@@ -64,7 +89,12 @@ import org.opencv.core.Mat;
    }
  */
 
-public final class Main {
+
+
+
+
+
+ public final class Main {
   private static String configFile = "/boot/frc.json";
 
   @SuppressWarnings("MemberName")
@@ -198,10 +228,8 @@ public final class Main {
     return camera;
   }
 
-  /**
-   * Example pipeline.
-   */
-  public static class MyPipeline implements VisionPipeline {
+ 
+  /*public static class MyPipeline implements VisionPipeline {
     public int val;
 
     @Override
@@ -210,6 +238,8 @@ public final class Main {
       System.out.println("Now you don't!");
     }
   }
+*/
+//The code to the below comment is from GRIP THINGY!
 
   /**
    * Main.\
@@ -230,6 +260,7 @@ public final class Main {
     int inc = 0;
     int car = 13;
     int van = 69;
+    
    
     
     if (server) {
@@ -249,14 +280,23 @@ public final class Main {
     // start image processing on camera 0 if present
     if (cameras.size() >= 1) {
       VisionThread visionThread = new VisionThread(cameras.get(0),
-              new MyPipeline(), pipeline -> {
-        // do something with pipeline results
+             new MyVisionPipeline(),pipeline-> {
+        //I just added the words "main."
+                // do something with pipeline results
         System.out.println("Now you see me!");
         table.getEntry("x").setNumber(inc);
         table.getEntry("Car").setNumber(car);
         table.getEntry("van").setNumber(van);
         table.getEntry("");
+          Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+          double centerX =r.x+(r.width / 2);
+          table.getEntry("CenterX").setDouble(centerX);
+          double centerY =r.y+(r.width / 2);
+          table.getEntry("CenterY").setDouble(centerY);
+       
+             
       });
+      visionThread.start();
       /* something like this for GRIP:
       VisionThread visionThread = new VisionThread(cameras.get(0),
               new GripPipeline(), pipeline -> {

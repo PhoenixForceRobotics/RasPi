@@ -23,20 +23,20 @@
       <grip:Input step="1" socket="0"/>
       <grip:Input step="1" socket="1">
         <value>
-          <double>78.77697815997995</double>
-          <double>144.163827407889</double>
+          <double>53.35324934642062</double>
+          <double>79.46808510638299</double>
         </value>
       </grip:Input>
       <grip:Input step="1" socket="2">
         <value>
-          <double>50.44963755410352</double>
-          <double>217.28670048632316</double>
+          <double>129.66101694915253</double>
+          <double>178.13829787234042</double>
         </value>
       </grip:Input>
       <grip:Input step="1" socket="3">
         <value>
-          <double>145.2338275291937</double>
-          <double>230.34129139506368</double>
+          <double>199.29378531073448</double>
+          <double>255.0</double>
         </value>
       </grip:Input>
       <grip:Output step="1" socket="0" previewed="true"/>
@@ -73,7 +73,7 @@
         <value>0.0</value>
       </grip:Input>
       <grip:Input step="4" socket="4">
-        <value>9999.0</value>
+        <value>91.0</value>
       </grip:Input>
       <grip:Input step="4" socket="5">
         <value>0.0</value>
@@ -83,7 +83,7 @@
       </grip:Input>
       <grip:Input step="4" socket="7">
         <value>
-          <double>69.47535491359291</double>
+          <double>35.39019963702359</double>
           <double>100.0</double>
         </value>
       </grip:Input>
@@ -128,28 +128,28 @@
   </steps>
   <connections>
     <grip:Connection>
-      <grip:Output step="4" socket="0" previewed="true"/>
-      <grip:Input step="5" socket="0"/>
-    </grip:Connection>
-    <grip:Connection>
-      <grip:Output step="0" socket="0" previewed="true"/>
-      <grip:Input step="1" socket="0"/>
-    </grip:Connection>
-    <grip:Connection>
       <grip:Output step="2" socket="0" previewed="false"/>
       <grip:Input step="3" socket="0"/>
-    </grip:Connection>
-    <grip:Connection>
-      <grip:Output source="0" socket="0" previewed="true"/>
-      <grip:Input step="0" socket="0"/>
     </grip:Connection>
     <grip:Connection>
       <grip:Output step="3" socket="0" previewed="true"/>
       <grip:Input step="4" socket="0"/>
     </grip:Connection>
     <grip:Connection>
+      <grip:Output step="0" socket="0" previewed="true"/>
+      <grip:Input step="1" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
       <grip:Output step="1" socket="0" previewed="true"/>
       <grip:Input step="2" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="4" socket="0" previewed="true"/>
+      <grip:Input step="5" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="0" socket="0"/>
     </grip:Connection>
   </connections>
   <settings>
@@ -163,10 +163,10 @@
   </settings>
   <codeGenerationSettings>
     <language>Java</language>
-    <className>VisionThread</className>
+    <className>MyVisionPipelineA</className>
     <implementWpilibPipeline>true</implementWpilibPipeline>
-    <saveDir>C:\PiTables</saveDir>
-    <packageName></packageName>
+    <saveDir>/Users/andrewbaruck/Documents/PiTables/java-multiCameraServer_D/src/main/java/grip</saveDir>
+    <packageName>grip</packageName>
     <moduleName>grip</moduleName>
   </codeGenerationSettings>
 </grip:Pipeline>
