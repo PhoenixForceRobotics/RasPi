@@ -31,3 +31,7 @@ Commit to often
 Add uneeded files
 add vulgar langauge to comments
 make comments undescriptive or to long
+
+
+Please DON'T copy and use this code unless it is for use for Phoenix Force 2097.
+
